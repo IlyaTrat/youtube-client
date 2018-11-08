@@ -1,0 +1,23 @@
+{
+  "name": "youtube-client",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "mocha": "^5.2.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.25.1"
+  }
+}
