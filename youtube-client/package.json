@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "server": "live-server"
   },
   "author": "",
   "license": "ISC",
@@ -19,5 +21,7 @@
     "mocha": "^5.2.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.25.1"
+  },
+  "dependencies": {
   }
 }
