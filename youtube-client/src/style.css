@@ -1,0 +1,60 @@
+body {
+  background: #2e2e2e
+}
+
+input {
+  display: block;
+  margin: 0px 25%;
+  width: 50%;
+  font-size: 30px;
+  border-radius: 5px;
+  border-style: solid;
+  border: transparent;
+}
+
+article {
+  text-align: center;
+}
+
+article header{
+  position: relative;
+}
+
+article header a {
+  display: grid;
+  position: absolute;
+  top: 30%;
+  max-height: 69%;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(51, 255, 61, 0.777);
+  text-align: center;
+  text-decoration: none;
+  font-size: 22px;
+  font-family: sans-serif;
+  color: #ffffff;
+}
+
+article div i {
+  margin: 5px;
+  font-size: 30px;
+}
+
+article div span {
+  margin: 5px;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: sans-serif;
+}
+
+.video-info {
+  display: inline-grid;;
+  padding: 10px 0px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: rgb(255, 193, 112);
+}
+
+article p {
+  margin: 5px;
+}
