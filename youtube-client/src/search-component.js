@@ -8,14 +8,9 @@ export default class Search {
     this.id = id;
     this.placeholder = placeholder;
     this.url = 'https://www.googleapis.com/youtube/v3/';
-    this.section = section;
+    this.videoInfoSection = section;
     this.data = [];
     this.nextPageToken = '';
-    this.currentIndex = 0;
-    this.articlesOnPage = 0;
-    this.pageIndex = 0;
-    this.mouseStartPosition = 0;
-    this.mouseEndPosition = 0;
   }
 
   createElement() {
@@ -38,19 +33,15 @@ export default class Search {
       }
     });
     element.onsubmit = () => {
-      this.section.clearInfoSection();
+      this.videoInfoSection.clearInfoSection();
       this.data = [];
       const param = document.getElementById(this.id).value;
       this.makeReq(param);
     };
-    window.addEventListener('resize', () => {
-      this.section.clearInfoSection();
-      this.section.showArticles(this.currentIndex);
-    });
 
     elementContainer.appendChild(elementIcon);
     elementContainer.appendChild(element);
-    return elementContainer;
+    document.body.appendChild(elementContainer);
   }
 
   makeReq(param) {
@@ -80,7 +71,7 @@ export default class Search {
         data.items.forEach((val, ind) => {
           this.data[ind].viewCount = val.statistics.viewCount;
         });
-        this.section.showArticles(0);
+        this.videoInfoSection.showArticles(0);
       }));
   }
 
@@ -96,6 +87,6 @@ export default class Search {
       };
       this.data.push(result);
     });
-    this.section.setData(this.data);
+    this.videoInfoSection.setData(this.data);
   }
 }

@@ -44,6 +44,11 @@ export default class VideoSection {
     document.body.appendChild(this.element);
     this.element = document.getElementById('video-section');
     this.addMouseEvent();
+
+    window.addEventListener('resize', () => {
+      this.clearInfoSection();
+      this.showArticles(this.currentIndex);
+    });
   }
 
   setData(data) {
