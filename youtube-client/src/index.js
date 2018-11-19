@@ -1,7 +1,10 @@
-import Search from './search/search';
+import Search from './search-component';
+import VideoSection from './video-info-section-component';
 
-const search = new Search('search', 'Input text');
-const videoSection = document.createElement('section');
-videoSection.id = 'video-section';
-document.body.appendChild(search);
-document.body.appendChild(videoSection);
+const section = new VideoSection({});
+const search = new Search('search', 'Input text', section);
+
+document.body.appendChild(search.createElement());
+section.createElement();
+console.log(section);
+// document.body.appendChild(section.createElement());

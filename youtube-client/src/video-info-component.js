@@ -1,27 +1,31 @@
 export default class VideoInfoComponent {
   constructor(options) {
     this.options = JSON.parse(JSON.stringify(options));
-    this.article = document.createElement('article');
-    this.header = document.createElement('header');
-    this.publisherContainer = document.createElement('div');
-    this.publishDateContainer = document.createElement('div');
-    this.viewCountContainer = document.createElement('div');
-    this.description = document.createElement('p');
+  }
 
-    this.article.className = 'video-info';
-    this.article.style.width = options.thumbnails.medium.width.toString().concat('px');
-    this.fillHeader(this.header);
-    this.fillPublisherContainer(this.publisherContainer);
-    this.fillPublishDateContainer(this.publishDateContainer);
-    this.fillViewCountContainer(this.viewCountContainer);
-    this.fillDescription();
+  createElement() {
+    const article = document.createElement('article');
+    const header = document.createElement('header');
+    const publisherContainer = document.createElement('div');
+    const publishDateContainer = document.createElement('div');
+    const viewCountContainer = document.createElement('div');
+    const description = document.createElement('p');
 
-    this.article.appendChild(this.header);
-    this.article.appendChild(this.publisherContainer);
-    this.article.appendChild(this.publishDateContainer);
-    this.article.appendChild(this.viewCountContainer);
-    this.article.appendChild(this.description);
-    return this.article;
+    article.className = 'video-info';
+    article.style.gridTemplateColumns = this.options.thumbnails.medium.width.toString().concat('px');
+    this.fillHeader(header);
+    this.fillPublisherContainer(publisherContainer);
+    this.fillPublishDateContainer(publishDateContainer);
+    this.fillViewCountContainer(viewCountContainer);
+    this.fillDescription(description);
+
+    article.appendChild(header);
+    article.appendChild(publisherContainer);
+    article.appendChild(publishDateContainer);
+    article.appendChild(viewCountContainer);
+    article.appendChild(description);
+
+    return article;
   }
 
   fillHeader(header) {
@@ -65,8 +69,9 @@ export default class VideoInfoComponent {
     viewCountContainer.appendChild(viewCount);
   }
 
-  fillDescription() {
-    this.description.className = 'description';
-    this.description.textContent = this.options.description;
+  fillDescription(description) {
+    const desc = description;
+    desc.className = 'description';
+    desc.textContent = this.options.description;
   }
 }

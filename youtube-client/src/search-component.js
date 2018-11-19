@@ -1,36 +1,56 @@
-import VideoInfo from '../video-info-component/video-info-component';
-
 export default class Search {
-  constructor(id, placeholder) {
+  constructor(id, placeholder, section) {
     this.options = {
       type: 'video',
       key: 'AIzaSyBaUTvlej9t_88Olyrp3sUtJ3BVjchgWR0',
       maxResults: '15',
     };
+    this.id = id;
+    this.placeholder = placeholder;
     this.url = 'https://www.googleapis.com/youtube/v3/';
+    this.section = section;
     this.data = [];
     this.nextPageToken = '';
+    this.currentIndex = 0;
+    this.articlesOnPage = 0;
+    this.pageIndex = 0;
+    this.mouseStartPosition = 0;
+    this.mouseEndPosition = 0;
+  }
 
+  createElement() {
+    const elementContainer = document.createElement('div');
+    const elementIcon = document.createElement('label');
     const element = document.createElement('input');
+
+    elementContainer.className = 'search-bar-container';
+
+    elementIcon.className = 'fas fa-search';
+    elementIcon.htmlFor = this.id;
+
     element.type = 'text';
-    element.id = id;
-    element.placeholder = placeholder;
+    element.id = this.id;
+    element.placeholder = this.placeholder;
     element.addEventListener('keyup', (event) => {
       event.preventDefault();
       if (event.keyCode === 13) {
-        document.getElementById(id).onsubmit();
+        document.getElementById(this.id).onsubmit();
       }
     });
     element.onsubmit = () => {
-      const section = document.getElementById('video-section');
-      while (section.firstChild) {
-        section.removeChild(section.firstChild);
-      }
+      this.section.clearInfoSection();
       this.data = [];
-      const param = document.getElementById(id).value;
+      const param = document.getElementById(this.id).value;
       this.makeReq(param);
     };
-    return element;
+    window.addEventListener('resize', () => {
+      this.section.clearInfoSection();
+      this.section.showArticles(this.currentIndex);
+    });
+
+    elementContainer.appendChild(elementIcon);
+    elementContainer.appendChild(element);
+    return elementContainer;
   }
 
   makeReq(param) {
@@ -60,7 +80,7 @@ export default class Search {
         data.items.forEach((val, ind) => {
           this.data[ind].viewCount = val.statistics.viewCount;
         });
-        this.addArticles();
+        this.section.showArticles(0);
       }));
   }
 
@@ -76,9 +96,6 @@ export default class Search {
       };
       this.data.push(result);
     });
-  }
-
-  addArticles() {
-    this.data.forEach(val => document.getElementById('video-section').appendChild(new VideoInfo(val)));
+    this.section.setData(this.data);
   }
 }
