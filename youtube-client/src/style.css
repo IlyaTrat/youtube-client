@@ -1,5 +1,6 @@
 body {
   background: #2e2e2e;
+  overflow: hidden;
 }
 
 .search-bar-container {
@@ -112,6 +113,7 @@ article p {
   color: #000000;
   border: solid #ffffff;
   background-color: #ffffff;
+  outline: none;
 }
 
 #page-nav button.active {
