@@ -1,5 +1,5 @@
 import VideoInfo from './video-info-component';
-import NavigationContainer from '../navigation-component/navigation-container-component';
+import NavigationContainer from '../navigation/navigation-container-component';
 
 export default class VideoSection {
   constructor(data = {}) {
@@ -22,12 +22,14 @@ export default class VideoSection {
     };
     this.move = (moveEvent) => {
       this.mouseEndPosition = moveEvent.pageX || moveEvent.changedTouches[0].pageX;
-      this.element.style.left = (this.mouseEndPosition - this.mouseStartPosition).toString().concat('px');
+      const shift = this.mouseEndPosition - this.mouseStartPosition;
+      console.log('translate('.concat(shift).concat('px)'));
+      this.element.style.transform = 'translate('.concat(shift).concat('px)');
     };
     this.up = () => {
       this.element.removeEventListener('mousemove', this.move);
       this.element.removeEventListener('touchmove', this.move);
-      this.element.style.left = '0px';
+      this.element.style.transform = 'translate(0px)';
       if (this.mouseStartPosition > this.mouseEndPosition) {
         if (this.currentIndex < this.data.length - this.articlesOnPage) {
           this.currentIndex += this.articlesOnPage;
