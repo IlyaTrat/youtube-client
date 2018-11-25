@@ -1,5 +1,5 @@
 export default class VideoInfoComponent {
-  constructor(options) {
+  constructor(options = {}) {
     this.options = JSON.parse(JSON.stringify(options));
   }
 
@@ -11,13 +11,15 @@ export default class VideoInfoComponent {
     const viewCountContainer = document.createElement('div');
     const description = document.createElement('p');
 
-    article.className = 'video-info';
-    article.style.gridTemplateColumns = this.options.thumbnails.medium.width.toString().concat('px');
-    this.fillHeader(header);
-    this.fillPublisherContainer(publisherContainer);
-    this.fillPublishDateContainer(publishDateContainer);
-    this.fillViewCountContainer(viewCountContainer);
-    this.fillDescription(description);
+    if (Object.keys(this.options).length !== 0) {
+      article.className = 'video-info';
+      article.style.gridTemplateColumns = '40vh';
+      this.fillHeader(header);
+      this.fillPublisherContainer(publisherContainer);
+      this.fillPublishDateContainer(publishDateContainer);
+      this.fillViewCountContainer(viewCountContainer);
+      this.fillDescription(description);
+    }
 
     article.appendChild(header);
     article.appendChild(publisherContainer);
