@@ -13,6 +13,7 @@ export default class VideoSection {
     this.mouseStartPosition = 0;
     this.mouseEndPosition = 0;
     this.search = undefined;
+    this.shift = 0;
 
     this.down = (downEvent) => {
       this.mouseStartPosition = downEvent.pageX || downEvent.changedTouches[0].pageX;
@@ -22,21 +23,20 @@ export default class VideoSection {
     };
     this.move = (moveEvent) => {
       this.mouseEndPosition = moveEvent.pageX || moveEvent.changedTouches[0].pageX;
-      const shift = this.mouseEndPosition - this.mouseStartPosition;
-      console.log('translate('.concat(shift).concat('px)'));
-      this.element.style.transform = 'translate('.concat(shift).concat('px)');
+      this.shift = this.mouseEndPosition - this.mouseStartPosition;
+      this.element.style.transform = 'translate('.concat(this.shift).concat('px)');
     };
     this.up = () => {
       this.element.removeEventListener('mousemove', this.move);
       this.element.removeEventListener('touchmove', this.move);
       this.element.style.transform = 'translate(0px)';
-      if (this.mouseStartPosition > this.mouseEndPosition) {
+      if (this.shift < -10) {
         if (this.currentIndex < this.data.length - this.articlesOnPage) {
           this.currentIndex += this.articlesOnPage;
           this.clearInfoSection();
           this.showArticles(this.currentIndex);
         }
-      } else if (this.mouseStartPosition < this.mouseEndPosition) {
+      } else if (this.shift > 10) {
         if (this.currentIndex >= this.articlesOnPage) {
           this.currentIndex -= this.articlesOnPage;
           this.clearInfoSection();

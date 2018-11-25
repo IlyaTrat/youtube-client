@@ -65,13 +65,13 @@ article div {
 }
 
 article div i {
-  margin: 5px;
-  font-size: 3vh;
+  margin: 0.5vh;
+  font-size: 3.5vh;
 }
 
 article div span {
-  margin: 0.1vh;
-  font-size: 3vh;
+  margin: 0.2vh;
+  font-size: 3.5vh;
   font-weight: 700;
   font-family: sans-serif;
 }
@@ -86,9 +86,10 @@ article div span {
 }
 
 article p {
-  margin: 5px;
+  margin: 0.2vh;
+  padding: 0.2vh;
   overflow: hidden;
-  font-size: 3vh;
+  font-size: 2.5vh;
 }
 
 #page-nav {
@@ -97,11 +98,11 @@ article p {
 }
 
 #page-nav button {
-  width: 30px;
-  height: 30px;
+  width: 4vh;
+  height: 4vh;
   text-align: center;
   margin: 0px 5px;
-  font-size: 13px;
+  font-size: 1.5vh;
   font-weight: 800;
   border-radius: 50%;
   color: #000000;
