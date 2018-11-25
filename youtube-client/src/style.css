@@ -1,11 +1,11 @@
 body {
-  background: #2e2e2e
+  background: #2e2e2e;
 }
 
 .search-bar-container {
   display: flex;
-  margin: 15px 15%;
-  width: 70%;
+  margin: 1vh 13vw;
+  width: 70vw;
   overflow: hidden;
   border-radius: 10px;
   border-style: solid;
@@ -29,6 +29,9 @@ body {
 section#video-section {
   display: flex;
   justify-content: center;
+  position: relative;
+  top: 0px;
+  height: 80vh;
 }
 
 article {
@@ -37,6 +40,10 @@ article {
 
 article header{
   position: relative;
+}
+
+article header img {
+  width: 40vh;
 }
 
 article header a {
@@ -48,7 +55,7 @@ article header a {
   overflow: hidden;
   background-color: rgba(51, 255, 61, 0.777);
   text-decoration: none;
-  font-size: 22px;
+  font-size: 3vh;
   font-family: sans-serif;
   color: #ffffff;
 }
@@ -59,12 +66,12 @@ article div {
 
 article div i {
   margin: 5px;
-  font-size: 30px;
+  font-size: 3vh;
 }
 
 article div span {
-  margin: 5px;
-  font-size: 22px;
+  margin: 0.1vh;
+  font-size: 3vh;
   font-weight: 700;
   font-family: sans-serif;
 }
@@ -73,7 +80,7 @@ article div span {
   display: grid;
   grid-template-rows: max-content max-content max-content max-content auto;
   padding: 10px 0px;
-  margin: 40px;
+  margin: 2vh 40px;
   border-radius: 10px;
   background-color: rgb(255, 193, 112);
 }
@@ -81,4 +88,28 @@ article div span {
 article p {
   margin: 5px;
   overflow: hidden;
+  font-size: 3vh;
+}
+
+#page-nav {
+  display: flex;
+  justify-content: center;
+}
+
+#page-nav button {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  margin: 0px 5px;
+  font-size: 13px;
+  font-weight: 800;
+  border-radius: 50%;
+  color: #000000;
+  border: solid #ffffff;
+  background-color: #ffffff;
+}
+
+#page-nav button.active {
+  color: #ffffff;
+  background-color: #000000;
 }
